@@ -1,16 +1,22 @@
 def bubble_sort(array)
-    for i in 0..array.length
-        sorted = true 
-
-    for k in 0...(array.length - i - 1)
-        if array[k] > array[k + 1]
-            array[k], array[k + 1] = array[k + 1], array[k]
-            sorted = false
+    #return original array if it has 0 or 1 elements
+    return array if array.size <= 1
+    loop do 
+        # loop check: must remain false to stop loop
+        swapped = false
+         # subtract one because zero-index based
+        (array.length - 1).times do |x|
+            if array[x] > array[x+1]
+                array[x], array[x+1] = array[x+1], array[x]
+                swapped = true
+            end
         end
+        
+        break if not swapped
     end
-        break if sorted
-    end
+
     array
 end
 
-puts bubble_sort([4,3,78,2,0,2])
+p bubble_sort([11,5,7,6,15])
+
